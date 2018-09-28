@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout } from 'antd'
 import 'antd/dist/antd.css'
 
-import Dogs from './Dogs'
+import Routes from './Routes'
 
 const App = () => {
   return (
@@ -10,8 +10,7 @@ const App = () => {
       <Layout.Header style={styles.header}>Dog Adoption</Layout.Header>
       <Layout.Content style={styles.content}>
         <div style={styles.contentDiv}>
-          <h1>List of Doges</h1>
-          <Dogs />
+          <Routes />
         </div>
       </Layout.Content>
       <Layout.Footer style={styles.footer}>
