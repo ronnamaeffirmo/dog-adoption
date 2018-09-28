@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Layout } from 'antd'
 import 'antd/dist/antd.css'
 import '../styles/app.css'
 
 import Routes from './Routes'
 
-const App = () => {
+const App = ({ history }) => {
   return (
     <Layout>
-      <Layout.Header style={styles.header}>Dog Adoption</Layout.Header>
+      <Layout.Header style={styles.header}>
+        <a onClick={() => history.push('/')}>Dog Adoption</a>
+      </Layout.Header>
       <Layout.Content style={styles.content}>
         <div style={styles.contentDiv}>
           <Routes />
@@ -44,4 +47,4 @@ const styles = {
   }
 }
 
-export default App;
+export default withRouter(App);
