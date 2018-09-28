@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
 import 'antd/dist/antd.css'
+import '../styles/app.css'
 
 import Routes from './Routes'
 
 const App = () => {
   return (
-    <Layout style={styles.layout}>
+    <Layout>
       <Layout.Header style={styles.header}>Dog Adoption</Layout.Header>
       <Layout.Content style={styles.content}>
         <div style={styles.contentDiv}>
@@ -21,9 +22,6 @@ const App = () => {
 }
 
 const styles = {
-  layout: {
-    height: '100vh'
-  },
   header: {
     position: 'fixed',
     zIndex: 1,
