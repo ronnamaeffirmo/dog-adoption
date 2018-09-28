@@ -1,0 +1,22 @@
+enum Gender {
+	MALE
+	FEMALE
+}
+
+enum Status {
+	ADOPTED
+	FOR_ADOPTION
+}
+
+type Dog {
+  id: ID! @unique
+  createdAt: DateTime!
+	name: String!
+	status: Status!
+	gender: Gender!
+	description: String!
+	history: String!
+	picture: String!
+	location: String!
+	contact: String!
+}

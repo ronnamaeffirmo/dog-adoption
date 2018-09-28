@@ -1,0 +1,6 @@
+# import Dog from './generated/prisma.graphql'
+
+type Query {
+	dogs: [Dog!]!
+	dog(id: ID!): Dog!
+}

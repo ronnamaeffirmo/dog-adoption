@@ -1,0 +1,7 @@
+#endpoint: ''
+endpoint: https://us1.prisma.sh/ronna-mae-firmo-1aec2b/dog-adoption/dev
+datamodel: datamodel.graphql
+secret: th3f0rg0t3ns3cr3t
+hooks:
+  post-deploy:
+    - graphql get-schema --project database

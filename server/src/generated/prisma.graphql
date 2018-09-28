@@ -1,0 +1,549 @@
+# source: https://us1.prisma.sh/ronna-mae-firmo-1aec2b/dog-adoption/dev
+# timestamp: Fri Sep 28 2018 16:01:53 GMT+0800 (+08)
+
+type AggregateDog {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+scalar DateTime
+
+type Dog implements Node {
+  id: ID!
+  createdAt: DateTime!
+  name: String!
+  status: Status!
+  gender: Gender!
+  description: String!
+  history: String!
+  picture: String!
+  location: String!
+  contact: String!
+}
+
+"""A connection to a list of items."""
+type DogConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [DogEdge]!
+  aggregate: AggregateDog!
+}
+
+input DogCreateInput {
+  name: String!
+  status: Status!
+  gender: Gender!
+  description: String!
+  history: String!
+  picture: String!
+  location: String!
+  contact: String!
+}
+
+"""An edge in a connection."""
+type DogEdge {
+  """The item at the end of the edge."""
+  node: Dog!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum DogOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  name_ASC
+  name_DESC
+  status_ASC
+  status_DESC
+  gender_ASC
+  gender_DESC
+  description_ASC
+  description_DESC
+  history_ASC
+  history_DESC
+  picture_ASC
+  picture_DESC
+  location_ASC
+  location_DESC
+  contact_ASC
+  contact_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type DogPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  name: String!
+  status: Status!
+  gender: Gender!
+  description: String!
+  history: String!
+  picture: String!
+  location: String!
+  contact: String!
+}
+
+type DogSubscriptionPayload {
+  mutation: MutationType!
+  node: Dog
+  updatedFields: [String!]
+  previousValues: DogPreviousValues
+}
+
+input DogSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DogSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DogSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DogSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: DogWhereInput
+}
+
+input DogUpdateInput {
+  name: String
+  status: Status
+  gender: Gender
+  description: String
+  history: String
+  picture: String
+  location: String
+  contact: String
+}
+
+input DogWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DogWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DogWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DogWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  status: Status
+
+  """All values that are not equal to given value."""
+  status_not: Status
+
+  """All values that are contained in given list."""
+  status_in: [Status!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [Status!]
+  gender: Gender
+
+  """All values that are not equal to given value."""
+  gender_not: Gender
+
+  """All values that are contained in given list."""
+  gender_in: [Gender!]
+
+  """All values that are not contained in given list."""
+  gender_not_in: [Gender!]
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  history: String
+
+  """All values that are not equal to given value."""
+  history_not: String
+
+  """All values that are contained in given list."""
+  history_in: [String!]
+
+  """All values that are not contained in given list."""
+  history_not_in: [String!]
+
+  """All values less than the given value."""
+  history_lt: String
+
+  """All values less than or equal the given value."""
+  history_lte: String
+
+  """All values greater than the given value."""
+  history_gt: String
+
+  """All values greater than or equal the given value."""
+  history_gte: String
+
+  """All values containing the given string."""
+  history_contains: String
+
+  """All values not containing the given string."""
+  history_not_contains: String
+
+  """All values starting with the given string."""
+  history_starts_with: String
+
+  """All values not starting with the given string."""
+  history_not_starts_with: String
+
+  """All values ending with the given string."""
+  history_ends_with: String
+
+  """All values not ending with the given string."""
+  history_not_ends_with: String
+  picture: String
+
+  """All values that are not equal to given value."""
+  picture_not: String
+
+  """All values that are contained in given list."""
+  picture_in: [String!]
+
+  """All values that are not contained in given list."""
+  picture_not_in: [String!]
+
+  """All values less than the given value."""
+  picture_lt: String
+
+  """All values less than or equal the given value."""
+  picture_lte: String
+
+  """All values greater than the given value."""
+  picture_gt: String
+
+  """All values greater than or equal the given value."""
+  picture_gte: String
+
+  """All values containing the given string."""
+  picture_contains: String
+
+  """All values not containing the given string."""
+  picture_not_contains: String
+
+  """All values starting with the given string."""
+  picture_starts_with: String
+
+  """All values not starting with the given string."""
+  picture_not_starts_with: String
+
+  """All values ending with the given string."""
+  picture_ends_with: String
+
+  """All values not ending with the given string."""
+  picture_not_ends_with: String
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
+  contact: String
+
+  """All values that are not equal to given value."""
+  contact_not: String
+
+  """All values that are contained in given list."""
+  contact_in: [String!]
+
+  """All values that are not contained in given list."""
+  contact_not_in: [String!]
+
+  """All values less than the given value."""
+  contact_lt: String
+
+  """All values less than or equal the given value."""
+  contact_lte: String
+
+  """All values greater than the given value."""
+  contact_gt: String
+
+  """All values greater than or equal the given value."""
+  contact_gte: String
+
+  """All values containing the given string."""
+  contact_contains: String
+
+  """All values not containing the given string."""
+  contact_not_contains: String
+
+  """All values starting with the given string."""
+  contact_starts_with: String
+
+  """All values not starting with the given string."""
+  contact_not_starts_with: String
+
+  """All values ending with the given string."""
+  contact_ends_with: String
+
+  """All values not ending with the given string."""
+  contact_not_ends_with: String
+}
+
+input DogWhereUniqueInput {
+  id: ID
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createDog(data: DogCreateInput!): Dog!
+  updateDog(data: DogUpdateInput!, where: DogWhereUniqueInput!): Dog
+  deleteDog(where: DogWhereUniqueInput!): Dog
+  upsertDog(where: DogWhereUniqueInput!, create: DogCreateInput!, update: DogUpdateInput!): Dog!
+  updateManyDogs(data: DogUpdateInput!, where: DogWhereInput): BatchPayload!
+  deleteManyDogs(where: DogWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  dogs(where: DogWhereInput, orderBy: DogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dog]!
+  dog(where: DogWhereUniqueInput!): Dog
+  dogsConnection(where: DogWhereInput, orderBy: DogOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DogConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+enum Status {
+  ADOPTED
+  FOR_ADOPTION
+}
+
+type Subscription {
+  dog(where: DogSubscriptionWhereInput): DogSubscriptionPayload
+}
