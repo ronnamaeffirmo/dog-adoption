@@ -4,19 +4,19 @@ import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import Dog from './Dog'
-
-const DOGS_QUERY = gql`
-	{ dogs {
-		id
-		name
-		gender
-		description
-		picture
-	}}
-`
+import styles from '../../styles/general'
 
 const Dogs = () => {
 	const loadingIcon = <Icon type='loading' style={styles.loading} spin />
+	const DOGS_QUERY = gql`
+		{ dogs {
+			id
+			name
+			gender
+			description
+			picture
+		}}
+	`
 
 	return (
 		<Query query={DOGS_QUERY}>
@@ -48,13 +48,6 @@ const Dogs = () => {
 			}}
 		</Query>
 	)
-}
-
-const styles = {
-	loading: {
-		marginTop: '28px',
-		fontSize: 46
-	}
 }
 
 export default Dogs
