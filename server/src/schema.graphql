@@ -1,4 +1,4 @@
-# import Dog from './generated/prisma.graphql'
+# import Dog, DogSubscriptionPayload from './generated/prisma.graphql'
 
 type Query {
 	dogs: [Dog!]!
@@ -7,4 +7,8 @@ type Query {
 
 type Mutation {
 	adoptDog(id: ID!): Dog!
+}
+
+type Subscription {
+  newDog: DogSubscriptionPayload
 }
