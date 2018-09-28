@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Breadcrumb } from 'antd'
-
 import 'antd/dist/antd.css'
 
-const { Header, Content, Footer } = Layout;
+import Dogs from './Dogs'
 
-class App extends Component {
-  render() {
-    return (
-      <Layout>
-        <Header style={styles.header}>Dog Adoption</Header>
-        <Content style={styles.content}>
-          <div style={styles.contentTitle}>List of Doges</div>
-        </Content>
-        <Footer>ronami ©2018</Footer>
-      </Layout>
-    );
-  }
+const App = () => {
+  return (
+    <Layout style={styles.layout}>
+      <Layout.Header style={styles.header}>Dog Adoption</Layout.Header>
+      <Layout.Content style={styles.content}>
+        <div style={styles.contentDiv}>
+          <h1>List of Doges</h1>
+          <Dogs />
+        </div>
+      </Layout.Content>
+      <Layout.Footer>ronami ©2018</Layout.Footer>
+    </Layout>
+  );
 }
 
 const styles = {
+  layout: {
+    height: '100vh'
+  },
   header: {
     position: 'fixed',
     zIndex: 1, 
@@ -28,13 +31,12 @@ const styles = {
   },
   content: {
     padding: '0 26px', 
-    marginTop: 64
+    marginTop: 72
   },
-  contentTitle: {
-    fontSize: 30,
-    padding: 24, 
-    minHeight: 380
-  }
+  contentDiv: {
+    padding: '42px 68px 68px 68px',
+    minHeight: 400
+  },
 }
 
 export default App;
