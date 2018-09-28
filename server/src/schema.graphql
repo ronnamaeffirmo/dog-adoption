@@ -4,3 +4,7 @@ type Query {
 	dogs: [Dog!]!
 	dog(id: ID!): Dog!
 }
+
+type Mutation {
+	adoptDog(id: ID!): Dog!
+}

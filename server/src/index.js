@@ -3,9 +3,11 @@ const { Prisma } = require('prisma-binding')
 
 // resolvers
 const Query = require('./resolvers/Query')
+const Mutation = require('./resolvers/Mutation')
 
 const resolvers = {
-	Query
+	Query,
+	Mutation
 }
 
 const server = new GraphQLServer({
