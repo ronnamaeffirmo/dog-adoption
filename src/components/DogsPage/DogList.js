@@ -1,7 +1,9 @@
 import React from 'react'
-import { List, Avatar, Spin, Icon, Alert } from 'antd';
+import { List, Spin, Icon, Alert } from 'antd';
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+
+import Dog from './Dog'
 
 const DOGS_QUERY = gql`
 	{ dogs {
@@ -32,15 +34,15 @@ const Dogs = () => {
 							pageSize: 3,
 						}}
 						dataSource={dogs}
-						renderItem={dog => (
-							<List.Item key={dog.id} extra={<img width={272} alt='logo' src={dog.picture} />}>
-								<List.Item.Meta
-									title={dog.name}
-									description={dog.gender}
-								/>
-								{ dog.description }
-							</List.Item>
-						)}
+						renderItem={dog => 
+							<Dog 
+								id={dog.id}
+								picture={dog.picture}
+								name={dog.name}
+								gender={dog.gender}
+								description={dog.description}
+							/>
+						}
 					/>
 				)
 			}}
