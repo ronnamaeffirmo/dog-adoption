@@ -14,7 +14,9 @@ const App = () => {
           <Dogs />
         </div>
       </Layout.Content>
-      <Layout.Footer>ronami ©2018</Layout.Footer>
+      <Layout.Footer style={styles.footer}>
+        ronami ©2018
+      </Layout.Footer>
     </Layout>
   );
 }
@@ -25,18 +27,24 @@ const styles = {
   },
   header: {
     position: 'fixed',
-    zIndex: 1, 
+    zIndex: 1,
     width: '100%',
-    color: 'white'
+    color: 'white',
+    paddingLeft: '426px'
   },
   content: {
     padding: '0 26px', 
-    marginTop: 72
+    marginTop: 64
   },
   contentDiv: {
-    padding: '42px 68px 68px 68px',
+    paddingTop: '32px',
+    paddingLeft: '400px',
+    paddingRight: '400px',
     minHeight: 400
   },
+  footer: {
+    paddingLeft: '426px'
+  }
 }
 
 export default App;
