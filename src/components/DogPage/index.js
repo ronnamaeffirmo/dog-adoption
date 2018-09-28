@@ -34,6 +34,7 @@ const DogPage = ({ match }) => {
 					<div>
 						<h1>{dog.name}</h1>
 						<Dawg
+							id={match.params.id}
 							status={dog.status}
 							gender={dog.gender}
 							description={dog.description}
