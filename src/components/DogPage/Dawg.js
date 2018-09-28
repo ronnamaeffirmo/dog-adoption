@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tag, Row, Col } from 'antd'
+import { Tag, Row, Col, Button } from 'antd'
 
 const Dawg = ({
 	status,
@@ -38,7 +38,14 @@ const Dawg = ({
 				<div style={styles.rightGrid}>
 					<Tag style={styles.tag} color={status === 'ADOPTED' ? 'magenta' : 'green'}>{status.replace(/_/g, ' ')}</Tag>
 					<br />
-					<img width={372} alt='logo' src={picture} />
+					<img style={styles.img} width={372} alt='logo' src={picture} />
+					<br />
+					{ status === 'FOR_ADOPTION' && 
+						<Button type='primary'>
+							<i style={styles.adoptme} class="fas fa-paw"></i>
+							Adopt me!
+						</Button>
+					}
 				</div>
 			</Col>
 		</Row>
@@ -51,6 +58,9 @@ const styles = {
 	},
 	tag: {
 		marginRight: '0px',
+	},
+	img: {
+		marginTop: '12px',
 		marginBottom: '12px'
 	},
 	information: {
@@ -59,6 +69,9 @@ const styles = {
 	infoLabel: {
 		fontSize: '11px',
 		color: '#d2d3d6'
+	},
+	adoptme: {
+		marginRight: '8px'
 	}
 }
 
