@@ -21,7 +21,9 @@ const NEW_DOGS_SUBSCRIPTION = gql`
 	}
 `
 const DOGS_QUERY = gql`
-	{ dogs {
+	{ dogs(where: {
+		status: FOR_ADOPTION
+	}) {
 		id
 		name
 		gender

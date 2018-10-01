@@ -1,5 +1,7 @@
 async function dogs(root, args, context, info) {
-	const dogs = await context.db.query.dogs({}, info)
+	const dogs = await context.db.query.dogs({
+		where: args.where
+	}, info)
 	return dogs
 }
 

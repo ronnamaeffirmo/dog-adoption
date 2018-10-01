@@ -1,7 +1,7 @@
-# import Dog, DogSubscriptionPayload from './generated/prisma.graphql'
+# import Dog, DogSubscriptionPayload, DogWhereInput from './generated/prisma.graphql'
 
 type Query {
-	dogs: [Dog!]!
+	dogs(where: DogWhereInput): [Dog!]!
 	dog(id: ID!): Dog!
 }
 
