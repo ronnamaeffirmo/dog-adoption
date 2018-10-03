@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Layout } from 'antd'
+import { Layout, Row, Col } from 'antd'
 import 'antd/dist/antd.css'
 import '../styles/app.css'
 
@@ -10,15 +10,27 @@ const App = ({ history }) => {
   return (
     <Layout>
       <Layout.Header style={styles.header}>
-        <a onClick={() => history.push('/')}>Dog Adoption</a>
+        <Col span={6}></Col>
+        <Col span={12}>
+          <a onClick={() => history.push('/')}>Dog Adoption</a>
+        </Col>
+        <Col span={6}></Col>
       </Layout.Header>
       <Layout.Content style={styles.content}>
-        <div style={styles.contentDiv}>
-          <Routes />
-        </div>
+        <Row>
+          <Col span={6}></Col>
+          <Col span={12} style={styles.col}>
+            <Routes />
+          </Col>
+          <Col span={6}></Col>
+        </Row>
       </Layout.Content>
-      <Layout.Footer style={styles.footer}>
-        ronami ©2018
+      <Layout.Footer>
+        <Col span={6}></Col>
+        <Col span={12}>
+          ronami ©2018
+        </Col>
+        <Col span={6}></Col>
       </Layout.Footer>
     </Layout>
   );
@@ -30,21 +42,13 @@ const styles = {
     zIndex: 1,
     width: '100%',
     color: 'white',
-    paddingLeft: '426px'
   },
   content: {
-    padding: '0 26px', 
-    marginTop: 64
+    marginTop: 96
   },
-  contentDiv: {
-    paddingTop: '32px',
-    paddingLeft: '400px',
-    paddingRight: '400px',
+  col: {
     minHeight: 400
   },
-  footer: {
-    paddingLeft: '426px'
-  }
 }
 
 export default withRouter(App);
