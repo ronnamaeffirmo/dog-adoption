@@ -7,40 +7,38 @@ import Dog from './Dog'
 const NEW_DOGS_SUBSCRIPTION = gql`
 	subscription {
 		newDog {
+			mutation
 			node {
 				id
 				name
 				gender
 				description
 				picture
+				status
 			}
 		}
 	}
 `
 
 export default class DogList extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-
 	_subscribeToNewDogs(subscribeToMore) {
 		subscribeToMore({
 			document: NEW_DOGS_SUBSCRIPTION,
 			updateQuery: (prev, { subscriptionData }) => {
-				console.log('=======================')
-				console.log('[!] firing subscription')
-				console.log('[!] subscription data', subscriptionData.data)
-				console.log('[!] new dog', newDog)
-				console.log('[!] prev', prev)
-				console.log('=======================')
-
 				if (!subscriptionData.data) return prev
-				const newDog = subscriptionData.data.newDog.node
+				const { mutation, node: newDog } = subscriptionData.data.newDog
 
-				return {
-					...prev,
-					dogs: [newDog, ...prev.dogs]
+				let nextState = {}
+				if (mutation === 'UPDATED') { // if `adopt me` is pressed
+					// return all dogs except the adopted
+					const dogs = prev.dogs.filter(dog => dog.id !== newDog.id)
+					nextState = { dogs }
+				} else {
+					// else return all dogs + new
+					nextState = { ...prev, dogs: [newDog, ...prev.dogs] }
 				}
+
+				return nextState
 			}
 		})
 	}
