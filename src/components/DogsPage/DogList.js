@@ -32,9 +32,9 @@ export default class DogList extends React.Component {
 				if (mutation === 'UPDATED') { // if `adopt me` is pressed
 					// return all dogs except the adopted
 					const dogs = prev.dogs.filter(dog => dog.id !== newDog.id)
-					nextState = { dogs }
+					nextState = { ...prev, dogs }
 				} else {
-					// else return all dogs + new
+					// else return new + all dogs
 					nextState = { ...prev, dogs: [newDog, ...prev.dogs] }
 				}
 
