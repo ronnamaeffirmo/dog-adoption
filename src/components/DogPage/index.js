@@ -3,11 +3,10 @@ import { Spin, Alert, Icon } from 'antd'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import Dawg from '././Dawg'
+import Dawg from './Dawg'
 import styles from '../../styles/general'
 
 const DogPage = ({ match }) => {
-	const loadingIcon = <Icon type='loading' style={styles.loading} spin />
 	const DAWG_QUERY = gql`
 		query Dog($id: ID!) {
 			dog(id: $id) {
@@ -26,7 +25,7 @@ const DogPage = ({ match }) => {
 	return (
 		<Query query={DAWG_QUERY} variables={{ id: match.params.id }}>
 			{({ error, loading, data }) => {
-				if (loading) return <Spin indicator={loadingIcon}></Spin>
+				if (loading) return <Spin indicator={<Icon type='loading' style={styles.loading} spin />}></Spin>
 				if (error) return <Alert type='error' message={error.message} banner />
 
 				const dog = data.dog

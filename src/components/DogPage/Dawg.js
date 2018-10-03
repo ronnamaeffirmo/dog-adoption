@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tag, Row, Col, Button } from 'antd'
+import { Tag, Row, Col, Button, Alert } from 'antd'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -33,7 +33,7 @@ const Dawg = ({
 					{description}
 				</div>
 				<div style={styles.information}>
-					<div style={styles.infoLabel}>history</div>
+					<div style={styles.infoLabel}>History</div>
 					{history}
 				</div>
 				<div style={styles.information}>
@@ -53,12 +53,18 @@ const Dawg = ({
 					<br />
 					{ status === 'FOR_ADOPTION' && 
 						<Mutation mutation={ADOPT_DOG_MUTATION} variables={{ id }}>
-							{ dogMutation =>
-								<Button onClick={dogMutation} type='primary'>
-									<i style={styles.adoptme} className="fas fa-paw"></i>
-									Adopt me!
-								</Button>
-							}
+							{(dogMutation, { loading, error, data }) => {
+								if (loading) return <div>Adopting doggu...</div>
+								if (error) return <Alert type='error' message={error.message} banner />
+								if (data) window.location.replace('/')
+
+								return (
+									<Button onClick={dogMutation} type='primary'>
+										<i style={styles.adoptme} className="fas fa-paw"></i>
+										Adopt me!
+									</Button>
+								)
+							}}
 						</Mutation>
 					}
 				</div>
