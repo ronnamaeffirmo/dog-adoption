@@ -25,7 +25,7 @@ const App = ({ history }) => {
           <Col span={6}></Col>
         </Row>
       </Layout.Content>
-      <Layout.Footer>
+      <Layout.Footer style={styles.footer}>
         <Col span={6}></Col>
         <Col span={12}>
           ronami ©2018
@@ -42,6 +42,7 @@ const styles = {
     zIndex: 1,
     width: '100%',
     color: 'white',
+    paddingLeft: '16px'
   },
   content: {
     marginTop: 96
@@ -49,6 +50,9 @@ const styles = {
   col: {
     minHeight: 400
   },
+  footer: {
+    paddingLeft: '16px'
+  }
 }
 
 export default withRouter(App);
